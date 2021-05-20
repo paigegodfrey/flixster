@@ -31,13 +31,20 @@ body {
   font-size: 16px;
 }
 
-.search-button {
+#search-button, #load-movies-button {
   background-color: #202020;
   height: 34px;
   box-sizing: border-box;
   font-size: 16px;
-  padding:  5px 12px;
   border: 1px solid white;
   color: #FFFEFE;
   border-radius: 5px;
+}
+
+#search-button {
+  padding:  5px 12px;
+}
+
+#load-movies-button {
+  padding:  5px 36px;
 }

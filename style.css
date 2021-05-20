@@ -21,7 +21,7 @@ body {
   align-self: center;
 }
 
-.search-input {
+#search-input {
   height: 24px;
   width: 400px;
   border: none;
@@ -31,7 +31,7 @@ body {
   font-size: 16px;
 }
 
-#search-button, #load-movies-button {
+#search-btn, #load-movies-btn {
   background-color: #202020;
   height: 34px;
   box-sizing: border-box;
@@ -41,10 +41,32 @@ body {
   border-radius: 5px;
 }
 
-#search-button {
+#search-btn {
   padding:  5px 12px;
 }
 
-#load-movies-button {
-  padding:  5px 36px;
+.load-movies {
+  margin: 50px 0;
+  text-align: center;
+}
+
+#load-movies-btn {
+  padding:  5px 45px;
+}
+
+.movie-card {
+  list-style: none;
+  margin: 20px 0;
+}
+
+.movie-poster {
+  height: 513px;
+}
+
+.movie-details {
+line-height: 0.6;
+}
+
+.movie-votes {
+  font-size: 1.17em;
 }

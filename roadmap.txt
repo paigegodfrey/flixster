@@ -1,8 +1,8 @@
 ** STEPS **
    
   HTML & CSS
-    [ ] Navigation
-      [ ] SearchBar
+    [x] Navigation
+      [x] SearchBar
     [ ] MovieList
       [ ] Movie
       [ ] MovieDetail (popup/modal)

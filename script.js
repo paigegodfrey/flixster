@@ -46,6 +46,11 @@ const fetchSearchMovies = async searchTerm => {
   return searchMoviesRes;
 }
 
+// Event handler for SearchBar
+const handleSearch = () => {
+  
+}
+
 // Return movies now playing as HTML
 const displayMovies = movieData => {
   let moviesHTML = movieData.map(movie => `
@@ -61,12 +66,10 @@ const displayMovies = movieData => {
   movieList.innerHTML = moviesHTML;
 }
 
-// loadMoreMovies
-
-// handleSearch
-
 // displayMovieDetails
 
 // closeMovieDetails
+
+// loadMoreMovies
 
 // init

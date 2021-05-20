@@ -1,5 +1,3 @@
-📝 `NOTE` Use this template to initialize the contents of a README.md file for your application. As you work on your assignment over the course of the week, update the required or stretch features lists to indicate which features you have completed by changing `[ ]` to `[x]`. (🚫 Remove this paragraph before submitting your assignment.)
-
 ## Week 1 Assignment: Flixster
 
 Submitted by: Paige Godfrey
@@ -39,7 +37,3 @@ Estimated time spent: **#** hours spent in total
 ### Open-source libraries used
 
 - Add any links to open-source libraries used in your project.
-
-### Shout out
-
-Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.

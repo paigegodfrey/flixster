@@ -1,0 +1,26 @@
+** STEPS **
+   
+  HTML & CSS
+    [ ] Navigation
+      [ ] SearchBar
+    [ ] MovieList
+      [ ] Movie
+      [ ] MovieDetail (popup/modal)
+    [ ] LoadMoreButton
+
+  CSS
+    [ ] Set breakpoints
+
+  JS
+    [ ] Define variables for selected elements
+    [ ] Get API key
+    [ ] Test API calls
+      [ ] All current movies (paginated)
+      [ ] Search results
+    [ ] Display movies on the page
+      [ ] Current movies
+      [ ] Search results
+    [ ] Open/close movie details
+    [ ] Initial page load
+      [ ] Event listeners
+    

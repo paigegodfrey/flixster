@@ -17,9 +17,16 @@ const isBlank = str => {
 
 // Makes conditional API call and returns movies as HTML 
 const getMovies = async searchTerm => {
-  let moviesRes = isBlank(searchTerm) ? await fetchMoviesNowPlaying() : await fetchSearchMovies(searchTerm);
-  !isBlank(searchTerm) ? loadMoreMoviesContainer.classList.add('hidden') : loadMoreMoviesContainer.classList.remove('hidden');
-  
+  let moviesRes;
+
+  if (isBlank(searchTerm)) {
+    loadMoreMoviesContainer.classList.remove('hidden')
+    moviesRes = await fetchMoviesNowPlaying();
+  } else {
+    loadMoreMoviesContainer.classList.add('hidden')
+    moviesRes = await fetchSearchMovies(searchTerm);
+  }
+
   displayMovies(moviesRes.results);
 }
 

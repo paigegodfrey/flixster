@@ -30,7 +30,7 @@ body {
   font-size: 16px;
 }
 
-#search-btn, #load-movies-btn {
+#search-btn, #load-more-movies-btn {
   background-color: #202020;
   height: 34px;
   box-sizing: border-box;
@@ -44,18 +44,28 @@ body {
   padding: 5px 12px;
 }
 
-.load-movies {
+.load-more-movies-container{
   margin: 50px 0;
   text-align: center;
 }
 
-#load-movies-btn {
+#load-more-movies-btn {
   display: inline-flex;
   justify-content: center;
   align-items: center;
   padding: 20px 60px;
   font-size: 20px;
   text-align: center;
+}
+
+#not-found-msg {
+  font-size: 28px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
 }
 
 .movie-card {

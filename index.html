@@ -18,21 +18,22 @@
         <h1>Flixster</h1>
       </a>
       <div class="search-container">
-        <form class="search-form">
+        <form id="search-form">
           <input id="search-input" type="text" placeholder="Search..." />
-          <button id="search-btn">Submit</button>
+          <input type="submit" id="search-btn" value="Submit">
         </form>
       </div>
     </div>
   </header>
 
   <main>
-    <div class="movie-list-container">
-        <ul id="movie-list"></ul>
+    <div id="movie-list-container">
+      <div id="not-found-msg"></div>
+      <ul id="movie-list"></ul>
     </div>
 
-    <div class="load-movies">
-      <button id="load-movies-btn">Load More</button>
+    <div class="load-more-movies-container">
+      <button class="load-more-movies" id="load-more-movies-btn">Load More</button>
     </div>
   </main>
 

@@ -17,23 +17,29 @@
       <a href="#">
         <h1>Flixster</h1>
       </a>
-      <div class="search-container">
+      <div class="search-form-container">
         <form id="search-form">
           <input id="search-input" type="text" placeholder="Search..." />
-          <input type="submit" id="search-btn" value="Submit">
+          <input type="submit" id="search-form-btn" value="Submit">
         </form>
       </div>
+      <button class="visibility-hidden" id="search-close-btn" onclick="closeMoviesSearched()">Close Search</button>
     </div>
   </header>
 
   <main>
-    <div id="movie-list-container">
-      <div id="not-found-msg"></div>
-      <ul id="movie-list"></ul>
+    <div class="movies-now-playing-container">
+      <h2>Now Playing</h2>
+      <ul id="movies-now-playing" class="movie-list"></ul>
+      <div class="load-more-movies-container">
+        <button id="load-more-movies-btn" onclick="loadMoreMovies()">Load More</button>
+      </div>
     </div>
-
-    <div class="load-more-movies-container">
-      <button class="load-more-movies" id="load-more-movies-btn" onclick="loadMoreMovies()"">Load More</button>
+    
+    <div class="movies-searched-container display-none ">
+      <h2>Search Results</h2>
+      <ul id="movies-searched" class="movie-list"></ul>
+      <p class="display-none" id="not-found-msg">Sorry, no results were found</p>
     </div>
   </main>
 

@@ -3,65 +3,72 @@ const API_BASE_URL = "https://api.themoviedb.org/3";
 
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
-const movieList = document.getElementById('movie-list');
-const notFoundMsg = document.getElementById('not-found-msg');
-const loadMoreMoviesContainer = document.querySelector('.load-more-movies-container')
-const loadMoreMoviesBtn = document.getElementById('load-more-movies-btn');
+const searchCloseBtn = document.getElementById('search-close-btn');
 
-let moviePage;
+const moviesNowPlayingContainer = document.querySelector('.movies-now-playing-container');
+const moviesNowPlaying = document.getElementById('movies-now-playing');
+const loadMoreBtn = document.getElementById('load-more-movies-btn');
+
+const moviesSearchedContainer = document.querySelector('.movies-searched-container')
+const moviesSearched = document.getElementById('movies-searched');
+const notFoundMsg = document.getElementById('not-found-msg');
+
+let moviePage = 1;
 
 // helper function to check for blank string
 const isBlank = str => {
   return (!str || /^\s*$/.test(str));
 }
 
-// Makes conditional API call and returns movies as HTML 
-const getMovies = async searchTerm => {
-  let moviesRes;
-  // reset page to 1 with every search
-  moviePage = 1;
-
-  if (isBlank(searchTerm)) {
-    loadMoreMoviesContainer.classList.remove('hidden')
-    moviesRes = await fetchMoviesNowPlaying();
-  } else {
-    loadMoreMoviesContainer.classList.add('hidden')
-    moviesRes = await fetchSearchMovies(searchTerm);
-  }
-
-  displayMovies(moviesRes.results);
+// Makes API call for movies now playing and display as HTML
+const loadMoviesNowPlaying = async () => {
+  let moviesRes = await (await fetch(`${API_BASE_URL}/movie/now_playing?api_key=${API_KEY}&page=${moviePage}`)).json();
+  return displayMovies(moviesRes.results, moviesNowPlaying);
 }
 
-// Makes API call for movies now playing and returns data as JSON
-const fetchMoviesNowPlaying = async () => {
-  // Found in API documentation Movies -> GET Now Playing
-  let allMoviesRes = await (await fetch(`${API_BASE_URL}/movie/now_playing?api_key=${API_KEY}&page=${moviePage}`)).json();
-  return allMoviesRes;
-}
-
-// Makes API call for movies based on search term and returns data as JSON
+// Makes API call for movies based on search term and display as HTML
 const fetchSearchMovies = async searchTerm => {
-  // Found in API documentation Getting Started -> Search & Query
-  let searchMoviesRes = await (await fetch(`${API_BASE_URL}/search/movie?api_key=${API_KEY}&query=${searchTerm}`)).json();
-  return searchMoviesRes;
+  let moviesRes = await (await fetch(`${API_BASE_URL}/search/movie?api_key=${API_KEY}&query=${searchTerm}`)).json();
+  return displayMovies(moviesRes.results, moviesSearched);
+}
+
+
+const handleSearchInputFocus = evt => {
+  searchCloseBtn.classList.remove('visibility-hidden');
+  moviesNowPlayingContainer.classList.add('display-none');
+  moviesSearchedContainer.classList.remove('display-none');
 }
 
 // Event handler for search form submit
 const handleSearchFormSubmit = evt => {
   evt.preventDefault();
-  movieList.innerHTML = '';
-
+  moviesNowPlayingContainer.classList.add('display-none');
+  moviesSearched.innerHTML = '';
+  
   let searchTerm = searchInput.value;
-  getMovies(searchTerm);
+  if (isBlank(searchTerm)) return;
+  
+  fetchSearchMovies(searchTerm);
 }
 
-// Return movies now playing as HTML
-const displayMovies = movieData => {
+const closeMoviesSearched = () => {
+  searchInput.value = '';
+  moviesSearched.innerHTML = '';
+
+  if (!notFoundMsg.classList.contains('display-none')) notFoundMsg.classList.add('display-none');
+
+  searchCloseBtn.classList.add('visibility-hidden');
+  moviesNowPlayingContainer.classList.remove('display-none');
+  moviesSearchedContainer.classList.add('display-none');
+}
+
+// Return movies as HTML
+const displayMovies = (movieData, htmlElement) => {
+
   // handle empty results
   if (!movieData.length) {
-    loadMoreMoviesContainer.classList.add('hidden');
-    notFoundMsg.innerText = 'Sorry, no results were found';
-    movieList.innerHTML = '';
+    notFoundMsg.classList.remove('display-none');
+    htmlElement.innerHTML = '';
     return;
   }
 
@@ -74,21 +81,25 @@ const displayMovies = movieData => {
       </div>
     </li>
   `).join('');
-  notFoundMsg.innerText = '';
-  movieList.innerHTML = movieList.innerHTML + moviesHTML;
+  notFoundMsg.classList.add('display-none');
+  htmlElement.innerHTML = htmlElement.innerHTML + moviesHTML;
 }
 
 // Increments moviePage and makes API call for movies now playing
 // Returns data as JSON 
 const loadMoreMovies = async () => {
   moviePage++;
-  let moviesRes = await fetchMoviesNowPlaying();
-  displayMovies(moviesRes.results);
+  loadMoviesNowPlaying();
 }
 
 // displayMovieDetails
 
 // closeMovieDetails
 
-searchForm.addEventListener('submit', handleSearchFormSubmit);
-getMovies();
+const initializeApp = async () => {
+  searchInput.addEventListener('focus', handleSearchInputFocus);
+  searchForm.addEventListener('submit', handleSearchFormSubmit);
+  loadMoviesNowPlaying();
+}
+
+initializeApp();

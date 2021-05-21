@@ -11,7 +11,7 @@
   CSS
     [x] Navigation
       [x] SearchBar
-    [ ] MovieList
+    [x] MovieList
       [x] MovieCard
       [ ] MovieDetail (popup/modal)
     [x] LoadMoreButton
@@ -27,6 +27,6 @@
       [x] Current movies
       [x] Search results
     [ ] Open/close movie details
-    [ ] Initial page load
-      [ ] Event listeners
+    [x] Initial page load
+      [x] Event listeners
     

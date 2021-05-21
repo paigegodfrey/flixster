@@ -8,7 +8,7 @@ const notFoundMsg = document.getElementById('not-found-msg');
 const loadMoreMoviesContainer = document.querySelector('.load-more-movies-container')
 const loadMoreMoviesBtn = document.getElementById('load-more-movies-btn');
 
-let moviePage = 1;
+let moviePage;
 
 // helper function to check for blank string
 const isBlank = str => {
@@ -18,6 +18,8 @@ const isBlank = str => {
 // Makes conditional API call and returns movies as HTML 
 const getMovies = async searchTerm => {
   let moviesRes;
+  // reset page to 1 with every search
+  moviePage = 1;
 
   if (isBlank(searchTerm)) {
     loadMoreMoviesContainer.classList.remove('hidden')
@@ -47,6 +49,8 @@ const fetchSearchMovies = async searchTerm => {
 // Event handler for search form submit
 const handleSearchFormSubmit = evt => {
   evt.preventDefault();
+  movieList.innerHTML = '';
+
   let searchTerm = searchInput.value;
   getMovies(searchTerm);
 }
@@ -71,13 +75,20 @@ const displayMovies = movieData => {
     </li>
   `).join('');
   notFoundMsg.innerText = '';
-  movieList.innerHTML = moviesHTML;
+  movieList.innerHTML = movieList.innerHTML + moviesHTML;
+}
+
+// Increments moviePage and makes API call for movies now playing
+// Returns data as JSON 
+const loadMoreMovies = async () => {
+  moviePage++;
+  let moviesRes = await fetchMoviesNowPlaying();
+  displayMovies(moviesRes.results);
 }
 
 // displayMovieDetails
 
 // closeMovieDetails
 
-// loadMoreMovies
-
 searchForm.addEventListener('submit', handleSearchFormSubmit);
+getMovies();

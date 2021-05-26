@@ -3,7 +3,7 @@ const API_BASE_URL = "https://api.themoviedb.org/3";
 
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
-const searchCloseBtn = document.getElementById('search-close-btn');
+const searchClearBtn = document.getElementById('search-clear-btn');
 
 const moviesNowPlayingContainer = document.querySelector('.movies-now-playing-container');
 const moviesNowPlaying = document.getElementById('movies-now-playing');
@@ -33,33 +33,37 @@ const fetchSearchMovies = async searchTerm => {
 }
 
 
-const handleSearchInputFocus = evt => {
-  searchCloseBtn.classList.remove('visibility-hidden');
-  moviesNowPlayingContainer.classList.add('display-none');
-  moviesSearchedContainer.classList.remove('display-none');
-}
+// const handleSearchInputFocus = evt => {
+//   searchClearBtn.classList.remove('visibility-hidden');
+// }
 
 // Event handler for search form submit
 const handleSearchFormSubmit = evt => {
   evt.preventDefault();
+
   moviesNowPlayingContainer.classList.add('display-none');
+  moviesSearchedContainer.classList.remove('display-none');
   moviesSearched.innerHTML = '';
-  
+
   let searchTerm = searchInput.value;
   if (isBlank(searchTerm)) return;
-  
+
   fetchSearchMovies(searchTerm);
 }
 
-const closeMoviesSearched = () => {
+const clearMoviesSearched = () => {
   searchInput.value = '';
-  moviesSearched.innerHTML = '';
+  // searchClearBtn.classList.add('visibility-hidden');
 
+  // only toggle now playing/search view if search is executed
+  if (moviesSearched.innerHTML || notFoundMsg.classList.contains('display-none')) {
+    moviesSearched.innerHTML = '';
+    moviesNowPlayingContainer.classList.remove('display-none');
+    moviesSearchedContainer.classList.add('display-none');
+  }
+
+  // hide notFoundMsg if displayed
   if (!notFoundMsg.classList.contains('display-none')) notFoundMsg.classList.add('display-none');
-
-  searchCloseBtn.classList.add('visibility-hidden');
-  moviesNowPlayingContainer.classList.remove('display-none');
-  moviesSearchedContainer.classList.add('display-none');
 }
 
 // Return movies as HTML
@@ -97,7 +101,7 @@ const loadMoreMovies = async () => {
 // closeMovieDetails
 
 const initializeApp = async () => {
-  searchInput.addEventListener('focus', handleSearchInputFocus);
+  // searchInput.addEventListener('focus', handleSearchInputFocus);
   searchForm.addEventListener('submit', handleSearchFormSubmit);
   loadMoviesNowPlaying();
 }

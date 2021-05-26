@@ -8,11 +8,11 @@
   <title>Flixter</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" >
 </head>
 
 <body>
-  <header>
+  <header class="header">
     <div class="navbar">
       <a href="#">
         <h1>Flixster</h1>
@@ -21,14 +21,14 @@
         <form id="search-form">
           <input id="search-input" type="text" placeholder="Search..." />
           <input type="submit" id="search-form-btn" value="Submit">
+          <button id="search-clear-btn" onclick="clearMoviesSearched()">Clear</button>
         </form>
       </div>
-      <button class="visibility-hidden" id="search-close-btn" onclick="closeMoviesSearched()">Close Search</button>
     </div>
   </header>
 
   <main>
-    <div class="movies-now-playing-container">
+    <div class="movies-container movies-now-playing-container">
       <h2>Now Playing</h2>
       <ul id="movies-now-playing" class="movie-list"></ul>
       <div class="load-more-movies-container">
@@ -36,7 +36,7 @@
       </div>
     </div>
     
-    <div class="movies-searched-container display-none ">
+    <div class="movies-container movies-searched-container display-none ">
       <h2>Search Results</h2>
       <ul id="movies-searched" class="movie-list"></ul>
       <p class="display-none" id="not-found-msg">Sorry, no results were found</p>

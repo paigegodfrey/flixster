@@ -16,11 +16,11 @@ body {
 .navbar {
   max-width: 1200px;
   margin: 0px auto;
-  height: 80px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-flow: row wrap;
+  margin: 10px auto;
 }
 
 .navbar a {
@@ -29,12 +29,11 @@ body {
   margin-right: 16px;
 }
 
-.search-form-container {
-  width: 100%
-}
-
 #search-form {
   display: flex;
+  align-items: center;
+  flex-grow: 1;
+  /* margin-bottom: 20px; */
 }
 
 #search-input {

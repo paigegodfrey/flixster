@@ -32,11 +32,6 @@ const fetchSearchMovies = async searchTerm => {
   return displayMovies(moviesRes.results, moviesSearched);
 }
 
-
-// const handleSearchInputFocus = evt => {
-//   searchClearBtn.classList.remove('visibility-hidden');
-// }
-
 // Event handler for search form submit
 const handleSearchFormSubmit = evt => {
   evt.preventDefault();
@@ -53,16 +48,14 @@ const handleSearchFormSubmit = evt => {
 
 const clearMoviesSearched = () => {
   searchInput.value = '';
-  // searchClearBtn.classList.add('visibility-hidden');
 
   // only toggle now playing/search view if search is executed
-  if (moviesSearched.innerHTML || notFoundMsg.classList.contains('display-none')) {
-    moviesSearched.innerHTML = '';
-    moviesNowPlayingContainer.classList.remove('display-none');
+  if (!moviesSearchedContainer.classList.contains('display-none')) {
     moviesSearchedContainer.classList.add('display-none');
+    moviesNowPlayingContainer.classList.remove('display-none');
   }
 
-  // hide notFoundMsg if displayed
+  if (moviesSearched.innerHTML) moviesSearched.innerHTML = '';
   if (!notFoundMsg.classList.contains('display-none')) notFoundMsg.classList.add('display-none');
 }
 
@@ -101,7 +94,6 @@ const loadMoreMovies = async () => {
 // closeMovieDetails
 
 const initializeApp = async () => {
-  // searchInput.addEventListener('focus', handleSearchInputFocus);
   searchForm.addEventListener('submit', handleSearchFormSubmit);
   loadMoviesNowPlaying();
 }

@@ -29,6 +29,8 @@ body {
   margin-right: 16px;
 }
 
+/* Search Form */
+
 #search-form {
   display: flex;
   align-items: center;
@@ -73,7 +75,6 @@ body {
   cursor: pointer;
   background-color: #88202a;
 }
-
 
 /* Main Content */
 
@@ -170,9 +171,5 @@ body {
 
 .display-none {
   display: none;
-}
-
-.visibility-hidden {
-  visibility: hidden;
 }
 

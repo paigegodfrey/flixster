@@ -3,12 +3,9 @@ const API_BASE_URL = "https://api.themoviedb.org/3";
 
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
-const searchClearBtn = document.getElementById('search-clear-btn');
 
 const moviesNowPlayingContainer = document.querySelector('.movies-now-playing-container');
 const moviesNowPlaying = document.getElementById('movies-now-playing');
-const loadMoreBtn = document.getElementById('load-more-movies-btn');
-
 const moviesSearchedContainer = document.querySelector('.movies-searched-container')
 const moviesSearched = document.getElementById('movies-searched');
 const notFoundMsg = document.getElementById('not-found-msg');
@@ -20,14 +17,14 @@ const isBlank = str => {
   return (!str || /^\s*$/.test(str));
 }
 
-// Makes API call for movies now playing and display as HTML
+// Makes API call for movies now playing and displays as HTML
 const loadMoviesNowPlaying = async () => {
   let moviesRes = await (await fetch(`${API_BASE_URL}/movie/now_playing?api_key=${API_KEY}&page=${moviePage}`)).json();
   return displayMovies(moviesRes.results, moviesNowPlaying);
 }
 
-// Makes API call for movies based on search term and display as HTML
-const fetchSearchMovies = async searchTerm => {
+// Makes API call for movies searched and displays as HTML
+const fetchMoviesSearched = async searchTerm => {
   let moviesRes = await (await fetch(`${API_BASE_URL}/search/movie?api_key=${API_KEY}&query=${searchTerm}`)).json();
   return displayMovies(moviesRes.results, moviesSearched);
 }
@@ -36,33 +33,31 @@ const fetchSearchMovies = async searchTerm => {
 const handleSearchFormSubmit = evt => {
   evt.preventDefault();
 
+  let searchTerm = searchInput.value;
+  if (isBlank(searchTerm)) return;
+
   moviesNowPlayingContainer.classList.add('display-none');
   moviesSearchedContainer.classList.remove('display-none');
   moviesSearched.innerHTML = '';
 
-  let searchTerm = searchInput.value;
-  if (isBlank(searchTerm)) return;
-
-  fetchSearchMovies(searchTerm);
+  fetchMoviesSearched(searchTerm);
 }
 
 const clearMoviesSearched = () => {
   searchInput.value = '';
 
-  // only toggle now playing/search view if search is executed
-  if (!moviesSearchedContainer.classList.contains('display-none')) {
-    moviesSearchedContainer.classList.add('display-none');
-    moviesNowPlayingContainer.classList.remove('display-none');
-  }
+  if (moviesSearchedContainer.classList.contains('display-none')) return;  
 
-  if (moviesSearched.innerHTML) moviesSearched.innerHTML = '';
-  if (!notFoundMsg.classList.contains('display-none')) notFoundMsg.classList.add('display-none');
+  moviesSearched.innerHTML = '';
+  notFoundMsg.classList.add('display-none');
+  moviesSearchedContainer.classList.add('display-none');
+  moviesNowPlayingContainer.classList.remove('display-none');
 }
 
 // Return movies as HTML
 const displayMovies = (movieData, htmlElement) => {
 
-  // handle empty results
+  // handle empty search results
   if (!movieData.length) {
     notFoundMsg.classList.remove('display-none');
     htmlElement.innerHTML = '';
@@ -78,12 +73,12 @@ const displayMovies = (movieData, htmlElement) => {
       </div>
     </li>
   `).join('');
+
   notFoundMsg.classList.add('display-none');
   htmlElement.innerHTML = htmlElement.innerHTML + moviesHTML;
 }
 
 // Increments moviePage and makes API call for movies now playing
-// Returns data as JSON 
 const loadMoreMovies = async () => {
   moviePage++;
   loadMoviesNowPlaying();

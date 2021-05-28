@@ -84,10 +84,6 @@ const loadMoreMovies = async () => {
   loadMoviesNowPlaying();
 }
 
-// displayMovieDetails
-
-// closeMovieDetails
-
 const initializeApp = async () => {
   searchForm.addEventListener('submit', handleSearchFormSubmit);
   loadMoviesNowPlaying();

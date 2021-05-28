@@ -2,7 +2,7 @@
 
 Submitted by: Paige Godfrey
 
-Estimated time spent: **#** hours spent in total
+Estimated time spent: 12 hours spent in total
 
 ### Application Features
 
@@ -24,9 +24,7 @@ Estimated time spent: **#** hours spent in total
 
 ### Walkthough GIF
 
-`TODO://` Add the URL to your animated app walkthough `gif` in the image tag below, `YOUR_GIF_URL_HERE`. Make sure the gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after after adding gif)
-
-<img src="YOUR_GIF_URL_HERE" width=250><br>
+<img src="https://imgur.com/RlzB2pL" width=250><br>
 
 ### Notes
 

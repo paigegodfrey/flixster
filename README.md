@@ -24,14 +24,11 @@ Estimated time spent: 12 hours spent in total
 
 ### Walkthough GIF
 
-<img src="https://imgur.com/RlzB2pL" width=250><br>
+N/A
 
 ### Notes
 
-* Describe any challenges encountered while building the project.
-* If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
-* Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
+N/A
 
 ### Open-source libraries used
-
-- Add any links to open-source libraries used in your project.
+N/A

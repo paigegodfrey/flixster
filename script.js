@@ -17,19 +17,19 @@ const isBlank = str => {
   return (!str || /^\s*$/.test(str));
 }
 
-// Makes API call for movies now playing and displays as HTML
+// makes API call for movies now playing and displays as HTML
 const loadMoviesNowPlaying = async () => {
   let moviesRes = await (await fetch(`${API_BASE_URL}/movie/now_playing?api_key=${API_KEY}&page=${moviePage}`)).json();
   return displayMovies(moviesRes.results, moviesNowPlaying);
 }
 
-// Makes API call for movies searched and displays as HTML
+// makes API call for movies searched and displays as HTML
 const fetchMoviesSearched = async searchTerm => {
   let moviesRes = await (await fetch(`${API_BASE_URL}/search/movie?api_key=${API_KEY}&query=${searchTerm}`)).json();
   return displayMovies(moviesRes.results, moviesSearched);
 }
 
-// Event handler for search form submit
+// event handler for search form submit
 const handleSearchFormSubmit = evt => {
   evt.preventDefault();
 
@@ -43,6 +43,7 @@ const handleSearchFormSubmit = evt => {
   fetchMoviesSearched(searchTerm);
 }
 
+// clears searchInput text and closes search results
 const clearMoviesSearched = () => {
   searchInput.value = '';
 
@@ -54,7 +55,7 @@ const clearMoviesSearched = () => {
   moviesNowPlayingContainer.classList.remove('display-none');
 }
 
-// Return movies as HTML
+// return movies as HTML
 const displayMovies = (movieData, htmlElement) => {
 
   // handle empty search results
@@ -78,12 +79,54 @@ const displayMovies = (movieData, htmlElement) => {
   htmlElement.innerHTML = htmlElement.innerHTML + moviesHTML;
 }
 
-// Increments moviePage and makes API call for movies now playing
+// const displayMoviePopup = movie => {
+//   let popup = document.createElement('div');
+//   popup.className = 'popup';
+
+//   let genres = movie.genres.slice(0, 3).map(genre => genre.name).join(', ');
+
+//   popup.innerHTML = `
+//       <button id="close-btn" onclick="closePopup()">Close</button>
+//       <article class="movie-popup">
+//           <img class="movie-backdrop" src="${imageBaseUrl}/w780${movie.backdropPath}" alt="${movie.title}" title="${movie.title}"/>
+//           <section class="movie-details">
+//               <div class="movie-image">
+//                   <img class="movie-poster" src="${imageBaseUrl}/w342${movie.posterPath}" alt="${movie.title}" title="${movie.title}"/>
+//               </div>
+//               <div class="movie-info">
+//                   <p class="movie-genres">${genres}</p>
+//                   <h3 class="movie-title">${movie.title}</h3>
+//                   <p class="movie-specs">${movie.runtime} min | ${movie.releaseDate}</p>
+//               </div>
+//               <div class="movie-votes">
+//                   <span>⭐</span><br>
+//                   ${movie.voteAvg}
+//               </div>
+//           </section>
+//           <p class-"movie-overview">${movie.overview}</p>
+//       </article>
+//   `;
+
+//   document.body.appendChild(popup)
+//   document.body.style.height = '100vh';
+//   document.body.style.overflowY = 'hidden';
+// }
+
+// function closePopup() {
+//   let popup = document.querySelector('.popup');
+//   popup.parentElement.removeChild(popup);
+
+//   document.body.style.height = '';
+//   document.body.style.overflowY = '';
+// }
+
+// increments moviePage and makes API call for movies now playing
 const loadMoreMovies = async () => {
   moviePage++;
   loadMoviesNowPlaying();
 }
 
+// triggers searchForm event listener and loads movies now playing
 const initializeApp = async () => {
   searchForm.addEventListener('submit', handleSearchFormSubmit);
   loadMoviesNowPlaying();

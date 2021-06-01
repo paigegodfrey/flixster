@@ -18,7 +18,7 @@ Estimated time spent: 12 hours spent in total
 #### STRETCH FEATURES
 
 - [ ] Allow user to view more details about a movie within a popup.
-- [x] Improve the user experience through CSS & animation.
+- [ ] Improve the user experience through CSS & animation.
 - [ ] Allow movie video trailers to be played using [embedded YouTube](https://support.google.com/youtube/answer/171780?hl=en)
 - [ ] Implement anything else that you can get done to improve the app functionality!
 
@@ -31,4 +31,5 @@ https://recordit.co/3Pet3LhWhp
 N/A
 
 ### Open-source libraries used
+
 N/A

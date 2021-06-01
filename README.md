@@ -24,7 +24,7 @@ Estimated time spent: 12 hours spent in total
 
 ### Walkthough GIF
 
-<img src="https://recordit.co/3Pet3LhWhp" width=250><br>
+https://recordit.co/3Pet3LhWhp
 
 ### Notes
 

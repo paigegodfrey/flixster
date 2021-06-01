@@ -79,47 +79,6 @@ const displayMovies = (movieData, htmlElement) => {
   htmlElement.innerHTML = htmlElement.innerHTML + moviesHTML;
 }
 
-// const displayMoviePopup = movie => {
-//   let popup = document.createElement('div');
-//   popup.className = 'popup';
-
-//   let genres = movie.genres.slice(0, 3).map(genre => genre.name).join(', ');
-
-//   popup.innerHTML = `
-//       <button id="close-btn" onclick="closePopup()">Close</button>
-//       <article class="movie-popup">
-//           <img class="movie-backdrop" src="${imageBaseUrl}/w780${movie.backdropPath}" alt="${movie.title}" title="${movie.title}"/>
-//           <section class="movie-details">
-//               <div class="movie-image">
-//                   <img class="movie-poster" src="${imageBaseUrl}/w342${movie.posterPath}" alt="${movie.title}" title="${movie.title}"/>
-//               </div>
-//               <div class="movie-info">
-//                   <p class="movie-genres">${genres}</p>
-//                   <h3 class="movie-title">${movie.title}</h3>
-//                   <p class="movie-specs">${movie.runtime} min | ${movie.releaseDate}</p>
-//               </div>
-//               <div class="movie-votes">
-//                   <span>⭐</span><br>
-//                   ${movie.voteAvg}
-//               </div>
-//           </section>
-//           <p class-"movie-overview">${movie.overview}</p>
-//       </article>
-//   `;
-
-//   document.body.appendChild(popup)
-//   document.body.style.height = '100vh';
-//   document.body.style.overflowY = 'hidden';
-// }
-
-// function closePopup() {
-//   let popup = document.querySelector('.popup');
-//   popup.parentElement.removeChild(popup);
-
-//   document.body.style.height = '';
-//   document.body.style.overflowY = '';
-// }
-
 // increments moviePage and makes API call for movies now playing
 const loadMoreMovies = async () => {
   moviePage++;

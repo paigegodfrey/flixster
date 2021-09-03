@@ -5,7 +5,7 @@
       [x] SearchBar
     [x] MovieList
       [x] MovieCard
-      [ ] MovieDetail (popup/modal)
+      [x] MovieDetail (popup/modal)
     [x] LoadMoreButton
 
   CSS

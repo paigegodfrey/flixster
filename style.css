@@ -140,6 +140,104 @@ body {
   font-weight: 500;
 }
 
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #202020;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie-popup {
+  max-width: 600px;
+  padding: 15px;
+}
+
+.movie-popup .movie-backdrop {
+  width: 100%;
+  display: block;
+  opacity: 1;
+}
+
+.movie-popup .movie-details {
+  display: flex;
+  flex-grow: 1;
+  align-items: flex-end;
+  flex-basis: auto;
+  padding: 15px 0;
+}
+
+.movie-popup .movie-image {
+  max-width: 180px;
+  padding-right: 20px;
+}
+
+.movie-popup .movie-poster {
+  border-radius: 6px;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  margin-top: -200px;
+}
+
+.movie-popup .movie-info {
+  margin-right: auto;
+}
+
+.movie-popup .movie-genres {
+  margin: 0;
+  text-transform: uppercase;
+  color: #99999F;
+  font-size: 18px;
+}
+
+.movie-popup .movie-title {
+  font-size: 30px;
+  font-weight: 500;
+  margin: 0;
+  padding: 5px 0;;
+}
+
+.movie-popup .movie-specs {
+  margin: 0;
+  color: #99999F;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.movie-popup .movie-votes {
+  color: #99999F;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+#close-btn {
+  position: absolute;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 34px;
+  top: 20px;
+  right: 20px;
+  background-color: #202020;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 10px 20px;
+  border: 1px solid white;
+  color: white;
+  font-size: 16px;
+}
+
+#close-btn:hover {
+  cursor: pointer;
+  background-color: black;
+}
+
 .load-more-movies-container {
   margin: 50px 0;
   text-align: center;

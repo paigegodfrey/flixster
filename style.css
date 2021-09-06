@@ -13,6 +13,11 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+h1 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 44px;
+}
+
 .navbar {
   max-width: 1200px;
   margin: 0px auto;
@@ -20,7 +25,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   flex-flow: row wrap;
-  margin: 10px auto;
+  margin: auto;
 }
 
 .navbar a {
@@ -47,7 +52,7 @@ body {
   font-size: 16px;
 }
 
-#search-form-btn, #search-clear-btn {
+#search-clear-btn {
   height: 34px;
   box-sizing: border-box;
   border: none;
@@ -56,15 +61,15 @@ body {
   font-size: 16px;
 }
 
-#search-form-btn {
+/* #search-form-btn {
   background-color: #28a745;
   margin-left: 3px;
-}
+} */
 
-#search-form-btn:hover {
+/* #search-form-btn:hover {
   cursor: pointer;
   background-color: #176629;
-}
+} */
 
 #search-clear-btn {
   background-color: #dc3545;

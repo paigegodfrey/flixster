@@ -1,6 +1,6 @@
 # Flixster
 
-Flixster is a movie application written in Vanilla JavaScript in which users can search titles and view movie details, including genre, duration, rating, and description.
+Flixster is a Vanilla JavaScript movie application in which users can browse current movies, search titles, and view details, including genre, duration, rating, and description.
 
 Application is built with pure CSS and features flexbox and grid. Data is sourced from The Movie Database API.
 
